@@ -4,7 +4,6 @@ phases:
     runtime-versions:
       python: 3.10
     commands:
-      - sudo apt install jq gettext bash-completion moreutils -y
       - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - &&
       - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" &&
       - sudo apt-get update -y &&
@@ -27,8 +26,7 @@ phases:
       - echo "Create Docker ECS context"
       - docker context create ecs ecs-workshop
       - echo "Change context to use ECS context"
-      - docker/docker context use ecs-workshop
-
+      - docker context use ecs-workshop
   build:
     commands:
       - DOCKER_HUB_ID=${DOCKERHUB_USERNAME} DOCKER_PULL_SECRETS_MANAGER=${DOCKER_PULL_SECRETS_MANAGER} docker compose -f docker-compose.yaml -f  docker-compose.prod.migrate.yaml -p ${PROJECT_NAME} up
