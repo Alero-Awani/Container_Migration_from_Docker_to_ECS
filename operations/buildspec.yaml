@@ -23,7 +23,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - docker/docker-compose build
+      - docker-compose build
       - echo "Tagging Docker image for Docker Hub"
       - docker images
       - docker tag src_backend:latest ${DOCKERHUB_USERNAME}/ubuntu-backend:${CODEBUILD_RESOLVED_SOURCE_VERSION}
