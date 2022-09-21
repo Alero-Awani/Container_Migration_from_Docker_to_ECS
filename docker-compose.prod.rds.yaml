@@ -1,0 +1,12 @@
+services:
+  backend:
+    environment:
+        - MY_SQL_DATABASE=workshop
+        - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
+        - MY_SQL_HOST=${RDS_ENDPOINT}
+        - MY_SQL_USER=admin
+
+secrets:
+  db-password:
+    name: ${RDS_DB_SECRET_ARN}
+    external: true
