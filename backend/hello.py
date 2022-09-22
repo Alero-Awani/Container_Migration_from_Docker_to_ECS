@@ -77,5 +77,9 @@ def addName(id,name):
         response = response  + '<div>   ' + c + '</div>'
     return response
 
+@server.route('/test')
+def hello():
+    return "Hello World!"
+
 if __name__ == '__main__':
     server.run()
