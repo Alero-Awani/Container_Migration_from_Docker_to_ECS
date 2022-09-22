@@ -25,7 +25,6 @@ phases:
       - echo $AWS_ACCESS_KEY_ID
       - export AWS_SECRET_ACCESS_KEY=$(echo $STS_RESPONSE | jq .SecretAccessKey | tr -d \")
       - export AWS_SESSION_TOKEN=$(echo $STS_RESPONSE | jq .Token | tr -d \")
-      - sudo pip install --upgrade awscli && hash -r
       - echo "Create Docker ECS context"
       - docker context create ecs ecs-workshop --from-env
       - echo "Change context to use ECS context"
